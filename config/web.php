@@ -46,9 +46,19 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '*' => 'site'
+                '' => 'site',
+                [
+                    'class' => yii\rest\UrlRule::class,
+                    'controller' => 'v1/order',
+                    'only' => ['index', 'create'],
+                ],
             ],
         ],
+    ],
+    'modules'=>[
+        'v1' => [
+            'class' => app\modules\v1\RestApi::class,
+        ]
     ],
     'params' => $params,
 ];
